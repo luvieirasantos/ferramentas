@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ferramentas</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Lista de Ferramentas</h2>
+        <a href="/ferramentas/new" class="button">Adicionar Nova Ferramenta</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="ferramenta : ${ferramentas}">
+                    <td th:text="${ferramenta.id}"></td>
+                    <td th:text="${ferramenta.nome}"></td>
+                    <td th:text="${ferramenta.tipo}"></td>
+                    <td th:text="${ferramenta.descricao}"></td>
+                    <td th:text="${ferramenta.preco}"></td>
+                    <td>
+                        <a th:href="@{/ferramentas/edit/{id}(id=${ferramenta.id})}">Editar</a>
+                        <a th:href="@{/ferramentas/delete/{id}(id=${ferramenta.id})}" onclick="return confirm('Tem certeza que deseja excluir esta ferramenta?');">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="/logout">Logout</a></p>
+    </div>
+</body>
+</html>
