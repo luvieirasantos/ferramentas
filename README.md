@@ -96,6 +96,14 @@ ferramentas/
 
 Para testes, você pode registrar um novo usuário através da página `/register`.
 
+## Configuração do Spring Initializr
+
+Abaixo está um exemplo da configuração utilizada no Spring Initializr para gerar o projeto inicial, incluindo as dependências:
+
+![Configuração do Spring Initializr](spring_initializr_config.png)
+
+**Observação:** A imagem acima é um placeholder. Em uma entrega real, seria incluído um screenshot da configuração do Spring Initializr.
+
 ## Deploy
 
 Para realizar o deploy, você pode utilizar plataformas como Heroku, Render, Fly.io, entre outros. O processo de deploy varia conforme a plataforma escolhida, mas geralmente envolve:
@@ -105,4 +113,4 @@ Para realizar o deploy, você pode utilizar plataformas como Heroku, Render, Fly
 3.  Configurar a integração contínua/deploy contínuo na plataforma.
 4.  Garantir que as variáveis de ambiente para o banco de dados estejam corretas na plataforma.
 
-**Observação:** Para este checkpoint, o deploy não foi realizado em uma plataforma externa, mas a aplicação está pronta para ser empacotada e implantada.
+**Observação:** Para este checkpoint, o deploy não foi realizado em uma plataforma externa. A aplicação está pronta para ser empacotada e implantada, e o link do deploy seria inserido aqui após a conclusão do processo.

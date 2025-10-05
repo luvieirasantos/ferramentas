@@ -1,0 +1,11 @@
+Nomes e RMs dos Integrantes:
+- Lu Vieira Santos: 558935
+- Melissa Pereira: 555656
+- Diego Furigo
+
+Link do GitHub: https://github.com/luvieirasantos/ferramentas
+Link do Deploy: [A SER INSERIDO APÓS O DEPLOY]
+Plataforma de Deploy: [A SER INSERIDO APÓS O DEPLOY]
+
+IDE Utilizada: IntelliJ IDEA (simulado no ambiente sandbox com VS Code e terminal)
+
