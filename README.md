@@ -26,7 +26,7 @@ ferramentas/
 │   │   └── resources/
 │   │       ├── static/            # Arquivos estáticos (CSS)
 │   │       ├── templates/         # Templates HTML (Thymeleaf)
-│   │       └── application.properties # Configurações da aplicação
+│   │       └── application.yml    # Configurações da aplicação
 ├── pom.xml                      # Configurações do Maven
 └── ...
 ```
@@ -84,17 +84,24 @@ ferramentas/
 4.  **Acesse a aplicação:**
     Abra seu navegador e acesse `http://localhost:8080`.
 
-## Telas da Aplicação
+## Telas da Aplicação e Fluxo de Usuário
 
-- **Página Inicial (`/`):** `index.html`
-- **Login (`/login`):** `login.html`
-- **Registro (`/register`):** `register.html`
-- **Listagem de Ferramentas (`/ferramentas`):** `ferramentas.html`
-- **Formulário de Ferramentas (`/ferramentas/new` ou `/ferramentas/edit/{id}`):** `ferramenta-form.html`
+- **Página Inicial (`/`):** `index.html` - Landing page que oferece links para Login e Registro.
+- **Login (`/login`):** `login.html` - Tela de login personalizada, diferente da padrão do Spring Security.
+- **Registro (`/register`):** `register.html` - Tela para novos usuários se cadastrarem, com persistência no banco de dados.
+- **Listagem de Ferramentas (`/ferramentas`):** `ferramentas.html` - Acesso restrito, exibe a lista de ferramentas e opções de CRUD.
+- **Formulário de Ferramentas (`/ferramentas/new` ou `/ferramentas/edit/{id}`):** `ferramenta-form.html` - Formulário para criar ou editar ferramentas.
+
+**Fluxo de Autenticação e Autorização:**
+
+1.  **Acesso Inicial:** O usuário acessa a página inicial (`/`).
+2.  **Login/Registro:** O usuário pode fazer login ou registrar-se. Após o registro, é redirecionado para a página de login.
+3.  **Pós-Login:** Após um login bem-sucedido, o usuário é redirecionado para a página de listagem de ferramentas (`/ferramentas`), que é uma rota protegida.
+4.  **Perfis de Usuário:** A aplicação suporta múltiplos perfis de usuário (ex: `USER`, `ADMIN`). A lógica de autorização pode ser estendida para restringir o acesso a certas funcionalidades ou páginas com base no perfil do usuário.
 
 ## Credenciais Padrão
 
-Para testes, você pode registrar um novo usuário através da página `/register`.
+Para testes, você pode registrar um novo usuário através da página `/register`. Por padrão, novos usuários recebem a role `USER`.
 
 ## Configuração do Spring Initializr
 
