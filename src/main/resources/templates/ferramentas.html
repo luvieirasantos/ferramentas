@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Ferramentas</title>
     <link rel="stylesheet" href="/css/style.css">
@@ -7,7 +7,9 @@
 <body>
     <div class="container">
         <h2>Lista de Ferramentas</h2>
-        <a href="/ferramentas/new" class="button">Adicionar Nova Ferramenta</a>
+        <div sec:authorize="hasRole('ADMIN')">
+            <a href="/ferramentas/new" class="button">Adicionar Nova Ferramenta</a>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -27,13 +29,15 @@
                     <td th:text="${ferramenta.descricao}"></td>
                     <td th:text="${ferramenta.preco}"></td>
                     <td>
-                        <a th:href="@{/ferramentas/edit/{id}(id=${ferramenta.id})}">Editar</a>
-                        <a th:href="@{/ferramentas/delete/{id}(id=${ferramenta.id})}" onclick="return confirm('Tem certeza que deseja excluir esta ferramenta?');">Excluir</a>
+                        <div sec:authorize="hasRole('ADMIN')">
+                            <a th:href="@{/ferramentas/edit/{id}(id=${ferramenta.id})}">Editar</a>
+                            <a th:href="@{/ferramentas/delete/{id}(id=${ferramenta.id})}" onclick="return confirm('Tem certeza que deseja excluir esta ferramenta?');">Excluir</a>
+                        </div>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <p><a href="/logout">Logout</a></p>
+        <p><a href="/logout">Sair</a></p>
     </div>
 </body>
 </html>

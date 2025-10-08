@@ -4,10 +4,11 @@ Este projeto implementa um sistema de gerenciamento de ferramentas utilizando Sp
 
 ## Funcionalidades
 
-- **Autenticação e Autorização:** Sistema de login e registro de usuários com Spring Security.
-- **CRUD de Ferramentas:** Operações de Criar, Ler, Atualizar e Deletar ferramentas.
+- **Autenticação e Autorização:** Sistema de login e registro de usuários com Spring Security e RBAC (Role-Based Access Control).
+- **RBAC (Controle de Acesso Baseado em Papéis):** Dois tipos de usuários - USER (pode visualizar ferramentas) e ADMIN (pode criar, editar e excluir ferramentas).
+- **CRUD de Ferramentas:** Operações de Criar, Ler, Atualizar e Deletar ferramentas com restrições por papel.
 - **Banco de Dados PostgreSQL:** Persistência de dados de usuários e ferramentas.
-- **Interface Web:** Páginas HTML dinâmicas com Thymeleaf para interação do usuário.
+- **Interface Web:** Páginas HTML dinâmicas com Thymeleaf para interação do usuário, com elementos UI condicionais baseados em papéis.
 - **Lombok:** Utilizado para reduzir código boilerplate.
 
 ## Estrutura do Projeto
@@ -95,21 +96,25 @@ ferramentas/
 **Fluxo de Autenticação e Autorização:**
 
 1.  **Acesso Inicial:** O usuário acessa a página inicial (`/`).
-2.  **Login/Registro:** O usuário pode fazer login ou registrar-se. Após o registro, é redirecionado para a página de login.
+2.  **Login/Registro:** O usuário pode fazer login ou registrar-se. Após o registro, é redirecionado para a página de login. Novos usuários recebem automaticamente o papel `USER`.
 3.  **Pós-Login:** Após um login bem-sucedido, o usuário é redirecionado para a página de listagem de ferramentas (`/ferramentas`), que é uma rota protegida.
-4.  **Perfis de Usuário:** A aplicação suporta múltiplos perfis de usuário (ex: `USER`, `ADMIN`). A lógica de autorização pode ser estendida para restringir o acesso a certas funcionalidades ou páginas com base no perfil do usuário.
+4.  **Perfis de Usuário e RBAC:**
+    - **USER:** Pode visualizar a lista de ferramentas e acessar páginas públicas.
+    - **ADMIN:** Pode criar, editar e excluir ferramentas, além de visualizar. A interface mostra botões adicionais para ações administrativas apenas para usuários com este papel.
+    - Restrições implementadas tanto no backend (Spring Security) quanto no frontend (Thymeleaf).
 
 ## Credenciais Padrão
 
-Para testes, você pode registrar um novo usuário através da página `/register`. Por padrão, novos usuários recebem a role `USER`.
+- **Usuário ADMIN:** `admin` / `admin123` (criado automaticamente na inicialização da aplicação)
+- **Usuários USER:** Registre novos usuários através da página `/register`. Por padrão, novos usuários recebem a role `USER`.
 
 ## Configuração do Spring Initializr
 
 Abaixo está um exemplo da configuração utilizada no Spring Initializr para gerar o projeto inicial, incluindo as dependências:
 
-![Configuração do Spring Initializr](spring_initializr_config.png)
+![Configuração do Spring Initializr](docs\spring-initializr.png)
 
-**Observação:** A imagem acima é um placeholder. Em uma entrega real, seria incluído um screenshot da configuração do Spring Initializr.
+
 
 ## Deploy
 
