@@ -1,0 +1,8 @@
+# Força o provider de Java e define comandos
+providers = ["java"]
+
+[phases.build]
+cmds = ["./mvnw -DskipTests=true clean package"]
+
+[start]
+cmd = "java -jar target/*.jar"
